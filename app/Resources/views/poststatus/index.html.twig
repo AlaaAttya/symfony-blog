@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PostStatus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for postStatus in postStatuses %}
+            <tr>
+                <td><a href="{{ path('admin_post-status_show', { 'id': postStatus.id }) }}">{{ postStatus.id }}</a></td>
+                <td>{{ postStatus.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_post-status_show', { 'id': postStatus.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_post-status_edit', { 'id': postStatus.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_post-status_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
