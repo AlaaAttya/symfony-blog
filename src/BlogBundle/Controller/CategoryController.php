@@ -10,6 +10,7 @@ use BlogBundle\Entity\Category;
 use BlogBundle\Form\CategoryType;
 
 /**
+ * @author  Alaa Attya <alaa.attya91@gmail.com>
  * Category controller.
  *
  * @Route("/admin/category")

@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @author  Alaa Attya <alaa.attya91@gmail.com>
+ */
 class PostStatusType extends AbstractType
 {
     /**

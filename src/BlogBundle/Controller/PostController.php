@@ -8,18 +8,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use BlogBundle\Entity\Post;
 use BlogBundle\Form\PostType;
+use BlogBundle\Entity\Comment;
 
 /**
+ * @author  Alaa Attya <alaa.attya91@gmail.com>
  * Post controller.
  *
  * @Route("/admin/post")
  */
 class PostController extends Controller
 {
+
     /**
      * Lists all Post entities.
      *
-     * @Route("/", name="admin_index")
+     * @Route("/", name="admin_post_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +39,7 @@ class PostController extends Controller
     /**
      * Creates a new Post entity.
      *
-     * @Route("/new", name="admin_new")
+     * @Route("/new", name="admin_post_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -50,7 +53,7 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('admin_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('admin_post_show', array('id' => $post->getId()));
         }
 
         return $this->render('post/new.html.twig', array(
@@ -62,7 +65,7 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/{id}", name="admin_show")
+     * @Route("/{id}", name="admin_post_show")
      * @Method("GET")
      */
     public function showAction(Post $post)
@@ -78,7 +81,7 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
-     * @Route("/{id}/edit", name="admin_edit")
+     * @Route("/{id}/edit", name="admin_post_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Post $post)
@@ -92,7 +95,7 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('admin_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('admin_post_edit', array('id' => $post->getId()));
         }
 
         return $this->render('post/edit.html.twig', array(
@@ -105,7 +108,7 @@ class PostController extends Controller
     /**
      * Deletes a Post entity.
      *
-     * @Route("/{id}", name="admin_delete")
+     * @Route("/{id}", name="admin_post_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Post $post)
@@ -119,7 +122,7 @@ class PostController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('admin_index');
+        return $this->redirectToRoute('admin_post_index');
     }
 
     /**
@@ -132,7 +135,7 @@ class PostController extends Controller
     private function createDeleteForm(Post $post)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_delete', array('id' => $post->getId())))
+            ->setAction($this->generateUrl('admin_post_delete', array('id' => $post->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

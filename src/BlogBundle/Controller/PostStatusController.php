@@ -10,6 +10,7 @@ use BlogBundle\Entity\PostStatus;
 use BlogBundle\Form\PostStatusType;
 
 /**
+ * @author  Alaa Attya <alaa.attya91@gmail.com>
  * PostStatus controller.
  *
  * @Route("/admin/post-status")

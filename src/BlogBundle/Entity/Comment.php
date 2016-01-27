@@ -37,6 +37,10 @@ class Comment
     private $post;
 
 
+    public function __construct() {
+        
+    }
+
     /**
      * Get id
      *
@@ -71,6 +75,8 @@ class Comment
         return $this->content;
     }
 
+
+
     /**
      * Get post
      *
@@ -86,7 +92,7 @@ class Comment
      * @param \BlogBundle\Entity\Post $Post
      * @return Post
      */
-    public function setVendor(\BlogBundle\Entity\Post $post = null) {
+    public function setPost(\BlogBundle\Entity\Post $post = null) {
         $this->post = $post;
         return $this;
     }

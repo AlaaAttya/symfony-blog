@@ -46,13 +46,20 @@ class Post
      * */
     private $categories;
 
-
      /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Comment", mappedBy="post" ,cascade={"all", "remove"})
      */
     private $comments;
+
+
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="BlogBundle\Entity\PostStatus", inversedBy="posts")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    private $post_status;
 
     /**
      * Constructor
@@ -174,6 +181,19 @@ class Post
      */
     public function removeComment(\BlogBundle\Entity\Comment $comments) {
         $this->comments->removeElement($comments);
+    }
+
+    public function getPostStatus() {
+        return $this->post_status;
+    }
+
+    public function setPostStatus($post_status) {
+        $this->post_status = $post_status;
+        return $this;
+    }
+
+    public function __toString() {
+        return $this->title;
     }
 }
 

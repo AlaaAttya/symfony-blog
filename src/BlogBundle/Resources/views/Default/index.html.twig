@@ -1,1 +1,8 @@
-Hello World!
+{% for post in posts %}
+	<div>
+		{{ post.title }}
+		<div>
+			{% include 'BlogBundle:common:post_comment.html.twig' with {'post_id': post.id} %}
+		</div>
+	</div>
+{% endfor %}

@@ -7,9 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @author  Alaa Attya <alaa.attya91@gmail.com>
+ * @author  Alaa Attya <alaa.attya91@gmail.com> 
  */
-class PostType extends AbstractType
+class CommentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,10 +18,8 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
             ->add('content')
-            ->add('categories')
-            ->add('post_status')
+            ->add('post')
         ;
     }
     
@@ -31,7 +29,7 @@ class PostType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BlogBundle\Entity\Post'
+            'data_class' => 'BlogBundle\Entity\Comment'
         ));
     }
 }

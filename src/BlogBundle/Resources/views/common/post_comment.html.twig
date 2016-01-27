@@ -1,0 +1,11 @@
+hello comment
+
+<form role='form' method='POST' action="{{path('save_comment', {'post_id': post_id})}}" class="form-horizontal col-md-12">
+    <input name="comment[post]" value="{{post_id}}" type="hidden" /> 
+    <div class="form-group">
+        {{form_label(comment_form.content, 'Comment')}}
+        {{form_widget(comment_form.content, {'attr':{'class':'form-control'}})}}
+    </div>
+    {{form_widget(comment_form._token)}}
+    <button class="btn btn-primary">comment</button>
+</form>

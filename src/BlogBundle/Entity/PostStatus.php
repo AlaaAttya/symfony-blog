@@ -28,6 +28,16 @@ class PostStatus
      */
     private $title;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Post", mappedBy="post_status" ,cascade={"all", "remove"})
+     */
+    private $posts;
+
+    public function getPosts() {
+        return $this->posts;
+    }
 
     /**
      * Get id
@@ -60,6 +70,10 @@ class PostStatus
      */
     public function getTitle()
     {
+        return $this->title;
+    }
+
+    public function __toString() {
         return $this->title;
     }
 }
