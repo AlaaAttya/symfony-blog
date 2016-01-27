@@ -1,0 +1,5 @@
+{% for comment in comments %}
+	{{comment.content}}
+	<small class="text-muted">created at: {{comment.createdAt|date}}</small>
+<hr />
+{% endfor %}

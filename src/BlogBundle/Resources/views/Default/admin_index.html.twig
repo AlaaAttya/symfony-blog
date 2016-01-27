@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+<a href="{{ path('fos_user_security_logout') }}">logout</a>
+
 hello admin
+
+<a href="{{path('admin_post_index')}}">manage posts</a>
+
 {% endblock %}

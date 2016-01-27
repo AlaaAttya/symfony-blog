@@ -1,0 +1,8 @@
+{% extends 'base_front.html.twig' %}
+
+{% block content %}
+	<h1>{{post.title}}</h1>
+	<p>{{post.content}}</p>
+	{% include 'BlogBundle:common:post_comments.html.twig' with {'comments': post.comments} %}
+	{% include 'BlogBundle:common:post_comment.html.twig' with {'post_id': post.id} %}
+{% endblock %}

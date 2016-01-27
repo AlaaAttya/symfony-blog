@@ -9,9 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\CommentRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Comment
 {
+
     /**
      * @var int
      *
@@ -36,9 +38,22 @@ class Comment
      */
     private $post;
 
+    /** 
+     * created Time/Date 
+     * 
+     * @var \DateTime 
+     * 
+     * @ORM\Column(name="created_at", type="datetime", nullable=false) 
+     */  
+    protected $createdAt;
+
 
     public function __construct() {
-        
+        $this->createdAt = new \DateTime();       
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
     }
 
     /**

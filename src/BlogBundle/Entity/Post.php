@@ -61,12 +61,26 @@ class Post
      */
     private $post_status;
 
+    /** 
+     * created Time/Date 
+     * 
+     * @var \DateTime 
+     * 
+     * @ORM\Column(name="created_at", type="datetime", nullable=false) 
+     */  
+    protected $createdAt;
+
     /**
      * Constructor
      */
     public function __construct() {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
     }
 
     /**
